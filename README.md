@@ -1,4 +1,4 @@
-# MACRO TERMINAL 📡
+# MARKET EGG 📡
 
 > NASA Mission Control 스타일 글로벌 매크로 금융 대시보드  
 > 100% TradingView 실시간 위젯 기반 · 하드코딩 제로

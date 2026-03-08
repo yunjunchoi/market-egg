@@ -52,6 +52,172 @@
       min-height: 100vh;
     }
 
+
+    /* ════════════════════════════════════════
+       NASA PANEL CHROME UPGRADES
+       ════════════════════════════════════════ */
+
+    /* 패널 전체 — 스캐닝 라인 애니메이션 */
+    .panel {
+      position: relative;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .panel:hover {
+      border-color: var(--border-bright);
+      box-shadow: 0 0 20px rgba(0,212,255,.08), inset 0 0 30px rgba(0,212,255,.02);
+    }
+
+    /* 상단 좌 코너 브래킷 */
+    .panel::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px;
+      width: 22px; height: 22px;
+      border-top: 2px solid var(--cyan);
+      border-left: 2px solid var(--cyan);
+      border-radius: 3px 0 0 0;
+      opacity: .7;
+      pointer-events: none;
+      z-index: 2;
+      transition: opacity .3s;
+    }
+    /* 하단 우 코너 브래킷 */
+    .panel::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; right: -1px;
+      width: 22px; height: 22px;
+      border-bottom: 2px solid var(--cyan);
+      border-right: 2px solid var(--cyan);
+      border-radius: 0 0 3px 0;
+      opacity: .35;
+      pointer-events: none;
+      z-index: 2;
+      transition: opacity .3s;
+    }
+    .panel:hover::before { opacity: 1; }
+    .panel:hover::after  { opacity: .65; }
+
+    /* ── 패널 헤더 강화 ── */
+    .panel-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px 8px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(90deg, rgba(0,212,255,.06) 0%, transparent 60%);
+      position: relative;
+      z-index: 1;
+    }
+    /* 헤더 왼쪽 강조선 */
+    .panel-header::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--cyan), transparent);
+      opacity: .6;
+    }
+
+    /* 패널 ID 태그 — 우측 상단 */
+    .panel-id {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: .12em;
+      color: var(--muted);
+      opacity: .6;
+      white-space: nowrap;
+    }
+
+    /* ── 패널 풋터 바 ── */
+    .panel-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 12px;
+      border-top: 1px solid var(--border);
+      background: linear-gradient(90deg, rgba(0,212,255,.04), transparent);
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .panel-footer-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: .08em;
+      color: var(--muted);
+    }
+    .panel-footer-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 5px rgba(0,255,163,.5);
+      animation: pulse-dot 2s infinite;
+    }
+    .panel-footer-source {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--cyan);
+      opacity: .5;
+      letter-spacing: .06em;
+    }
+
+    /* ── 위젯 래퍼 — 상단 스캔라인 마스크 ── */
+    .widget-wrap {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    /* 위젯 상단 페이드 (헤더와 자연스럽게 연결) */
+    .widget-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(180deg, rgba(0,212,255,.06), transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ── 사이드 눈금 데코 ── */
+    .panel-ruler {
+      position: absolute;
+      top: 42px; bottom: 30px;
+      left: 0;
+      width: 3px;
+      background: repeating-linear-gradient(
+        180deg,
+        rgba(0,212,255,.15) 0px,
+        rgba(0,212,255,.15) 1px,
+        transparent 1px,
+        transparent 8px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ── 호버 시 오버레이 텍스트 (우하단) ── */
+    .panel-coord {
+      position: absolute;
+      bottom: 32px;
+      right: 10px;
+      font-family: var(--font-mono);
+      font-size: 8px;
+      color: rgba(0,212,255,.2);
+      letter-spacing: .08em;
+      pointer-events: none;
+      z-index: 3;
+      transition: color .3s;
+    }
+    .panel:hover .panel-coord { color: rgba(0,212,255,.45); }
+
     /* ════════ SCANLINE OVERLAY ════════ */
     body::before {
       content: '';
@@ -492,6 +658,86 @@
       border-radius: 3px;
     }
     @keyframes shimmer { 0% { background-position:200% 0; } 100% { background-position:-200% 0; } }
+
+
+    /* ════════ LINK CARD NASA 업그레이드 ════════ */
+    .link-card {
+      position: relative;
+      overflow: hidden;
+    }
+    /* 링크카드 — 코너 브래킷 */
+    .link-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 14px; height: 14px;
+      border-top: 1.5px solid var(--cyan);
+      border-left: 1.5px solid var(--cyan);
+      border-radius: 2px 0 0 0;
+      opacity: .5;
+      transition: opacity .2s;
+    }
+    .link-card:hover::before { opacity: 1; }
+    /* 링크카드 — 배경 스캔 효과 */
+    .link-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,212,255,.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    /* 링크카드 그리드 래퍼 — 상단 구분선 */
+    .link-card-grid {
+      border-top: 1px solid rgba(0,212,255,.08);
+      padding-top: 12px;
+    }
+    /* 링크카드 심볼 — 글로우 */
+    .link-card:hover .link-card-symbol {
+      color: var(--cyan);
+      text-shadow: 0 0 10px rgba(0,212,255,.4);
+    }
+    /* 패널 헤더 ID 태그 위치 */
+    .panel-id {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: .12em;
+      color: var(--muted);
+      opacity: .5;
+      white-space: nowrap;
+      padding: 2px 6px;
+      border: 1px solid rgba(0,212,255,.12);
+      border-radius: 2px;
+    }
+
+    /* ════════ SECTION DIVIDER 강화 ════════ */
+    .section-divider {
+      position: relative;
+    }
+    .divider-text {
+      font-family: var(--font-display);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .35em;
+      color: rgba(0,212,255,.45);
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding: 3px 10px;
+      border: 1px solid rgba(0,212,255,.12);
+      border-radius: 2px;
+      background: rgba(0,212,255,.04);
+    }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(0,212,255,.4), transparent);
+    }
+    /* 섹션 번호 강조 */
+    .divider-text::before {
+      content: '▸ ';
+      color: var(--cyan);
+      opacity: .6;
+    }
 
     /* ════════ SCROLL BAR ════════ */
     ::-webkit-scrollbar { width: 5px; height: 5px; }
@@ -999,8 +1245,10 @@
     <div class="panel-header">
       <div class="panel-dot green"></div>
       <span class="section-title">S&amp;P 500</span>
+      <span class="panel-id">#SYS-EGG-00</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-300">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1019,6 +1267,14 @@
           </script>
         </div>
       </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
+      </div>
     </div>
   </div>
 
@@ -1027,8 +1283,10 @@
     <div class="panel-header">
       <div class="panel-dot amber"></div>
       <span class="section-title">US MARKET NEWS</span>
+      <span class="panel-id">#MKT-KOR-01</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-300">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1046,6 +1304,14 @@
           </script>
         </div>
       </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
+      </div>
     </div>
   </div>
 
@@ -1054,8 +1320,10 @@
     <div class="panel-header">
       <div class="panel-dot cyan" style="background:var(--cyan);box-shadow:var(--glow-cyan)"></div>
       <span class="section-title">US MARKET OVERVIEW — SECTORS</span>
+      <span class="panel-id">#MKT-KOR-02</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-400">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1126,6 +1394,14 @@
           </script>
         </div>
       </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
+      </div>
     </div>
   </div>
 
@@ -1140,6 +1416,7 @@
     <div class="panel-header">
       <div class="panel-dot" style="background:var(--cyan);box-shadow:var(--glow-cyan)"></div>
       <span class="section-title">GLOBAL EQUITY HEATMAP — 자금 흐름</span>
+      <span class="panel-id">#MKT-KOR-03</span>
     </div>
     <div class="panel-body" style="padding:0">
 
@@ -1155,7 +1432,8 @@
       <div id="heatmap-panels">
         <!-- US Heatmap -->
         <div class="flow-panel active" id="heatmap-us">
-          <div class="widget-wrap h-450">
+          <div class="panel-ruler"></div>
+      <div class="widget-wrap h-450">
             <div class="tradingview-widget-container" style="height:100%">
               <div class="tradingview-widget-container__widget" style="height:100%"></div>
               <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js"
@@ -1183,7 +1461,8 @@
 
         <!-- KR Heatmap -->
         <div class="flow-panel" id="heatmap-kr">
-          <div class="widget-wrap h-450">
+          <div class="panel-ruler"></div>
+      <div class="widget-wrap h-450">
             <div class="tradingview-widget-container" style="height:100%">
               <div class="tradingview-widget-container__widget" style="height:100%"></div>
               <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js"
@@ -1211,7 +1490,8 @@
 
         <!-- Crypto Heatmap -->
         <div class="flow-panel" id="heatmap-crypto">
-          <div class="widget-wrap h-450">
+          <div class="panel-ruler"></div>
+      <div class="widget-wrap h-450">
             <div class="tradingview-widget-container" style="height:100%">
               <div class="tradingview-widget-container__widget" style="height:100%"></div>
               <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js"
@@ -1242,8 +1522,10 @@
     <div class="panel-header">
       <div class="panel-dot amber"></div>
       <span class="section-title">GLOBAL MACRO SCREENER</span>
+      <span class="panel-id">#MKT-KOR-04</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-500">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1262,6 +1544,14 @@
           </script>
         </div>
       </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
+      </div>
     </div>
   </div>
 
@@ -1270,8 +1560,10 @@
     <div class="panel-header">
       <div class="panel-dot amber"></div>
       <span class="section-title">MACRO / GLOBAL NEWS</span>
+      <span class="panel-id">#MKT-KOR-05</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-500">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1289,6 +1581,14 @@
           </script>
         </div>
       </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
+      </div>
     </div>
   </div>
 
@@ -1303,8 +1603,10 @@
     <div class="panel-header">
       <div class="panel-dot" style="background:var(--cyan);box-shadow:var(--glow-cyan)"></div>
       <span class="section-title">FX CROSS RATES — 주요 통화</span>
+      <span class="panel-id">#MKT-US-01</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-450">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1321,6 +1623,14 @@
           </script>
         </div>
       </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
+      </div>
     </div>
   </div>
 
@@ -1329,8 +1639,10 @@
     <div class="panel-header">
       <div class="panel-dot green"></div>
       <span class="section-title">USD / KRW 달러원</span>
+      <span class="panel-id">#MKT-US-02</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1345,6 +1657,14 @@
           </script>
         </div>
       </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
+      </div>
     </div>
   </div>
 
@@ -1353,8 +1673,10 @@
     <div class="panel-header">
       <div class="panel-dot green"></div>
       <span class="section-title">USD / JPY 달러엔</span>
+      <span class="panel-id">#MKT-US-03</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1369,6 +1691,14 @@
           </script>
         </div>
       </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
+      </div>
     </div>
   </div>
 
@@ -1377,8 +1707,10 @@
     <div class="panel-header">
       <div class="panel-dot green"></div>
       <span class="section-title">USD / CNY 달러위안</span>
+      <span class="panel-id">#MKT-US-04</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1393,6 +1725,14 @@
           </script>
         </div>
       </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
+      </div>
     </div>
   </div>
 
@@ -1401,8 +1741,10 @@
     <div class="panel-header">
       <div class="panel-dot green"></div>
       <span class="section-title">EUR / USD 유로달러</span>
+      <span class="panel-id">#MKT-OVW-01</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1417,6 +1759,14 @@
           </script>
         </div>
       </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
+      </div>
     </div>
   </div>
 
@@ -1425,6 +1775,7 @@
     <div class="panel-header">
       <div class="panel-dot amber"></div>
       <span class="section-title">FOREX HEAT MAP — 통화 강세/약세 (TradingView)</span>
+      <span class="panel-id">#CAP-HMP-01</span>
     </div>
     <div class="panel-body">
       <div class="link-card-grid">
@@ -1483,8 +1834,10 @@
     <div class="panel-header">
       <div class="panel-dot" style="background:var(--amber);box-shadow:var(--glow-amber)"></div>
       <span class="section-title">ECONOMIC CALENDAR — 주요 경제 이벤트</span>
+      <span class="panel-id">#CAP-SCR-01</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-500">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1501,6 +1854,14 @@
           </script>
         </div>
       </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
+      </div>
     </div>
   </div>
 
@@ -1515,8 +1876,10 @@
     <div class="panel-header">
       <div class="panel-dot amber"></div>
       <span class="section-title">GOLD 금</span>
+      <span class="panel-id">#CAP-NWS-01</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1530,6 +1893,14 @@
           </script>
         </div>
       </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
+      </div>
     </div>
   </div>
 
@@ -1538,8 +1909,10 @@
     <div class="panel-header">
       <div class="panel-dot amber"></div>
       <span class="section-title">OIL WTI 원유</span>
+      <span class="panel-id">#FX-CRS-01</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1553,6 +1926,14 @@
           </script>
         </div>
       </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
+      </div>
     </div>
   </div>
 
@@ -1562,8 +1943,10 @@
     <div class="panel-header">
       <div class="panel-dot" style="background:var(--amber);box-shadow:var(--glow-amber)"></div>
       <span class="section-title">BTC / USD 비트코인</span>
+      <span class="panel-id">#FX-KRW-01</span>
     </div>
     <div class="panel-body" style="padding:0">
+      <div class="panel-ruler"></div>
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
@@ -1576,6 +1959,14 @@
             }
           </script>
         </div>
+      </div>
+      <div class="panel-coord">◈ TV-WIDGET ◈</div>
+      <div class="panel-footer">
+        <div class="panel-footer-item">
+          <div class="panel-footer-dot"></div>
+          <span id="live-ts" class="live-ts">REALTIME · <span class="ts-val">--:--</span></span>
+        </div>
+        <span class="panel-footer-source">SRC: TRADINGVIEW.COM</span>
       </div>
     </div>
   </div>
@@ -1640,6 +2031,18 @@ function updateClock() {
 }
 updateClock();
 setInterval(updateClock, 1000);
+
+/* ─── Live Timestamp on panel footers ─── */
+function updateLiveTS() {
+  const now = new Date();
+  const kst = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+  const pad = n => String(n).padStart(2,'0');
+  const ts = pad(kst.getHours()) + ':' + pad(kst.getMinutes()) + ':' + pad(kst.getSeconds());
+  document.querySelectorAll('.ts-val').forEach(el => el.textContent = ts);
+}
+updateLiveTS();
+setInterval(updateLiveTS, 1000);
+
 
 /* ─── Heatmap Tab Switcher ─── */
 function switchHeatmap(id, tabsId, panelsId) {

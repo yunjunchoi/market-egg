@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MACRO TERMINAL — Global Market Intelligence</title>
+  <title>MARKET EGG — Global Macro Intelligence</title>
 
   <!-- ── Google Fonts ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -528,6 +528,64 @@
       opacity: .3;
       pointer-events: none;
     }
+
+    /* ════════ LINK CARD (차트 대체) ════════ */
+    .link-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .link-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      background: var(--bg-panel-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .2s, background .2s, box-shadow .2s;
+      min-height: 120px;
+    }
+    .link-card:hover {
+      border-color: var(--border-bright);
+      background: var(--cyan-dim);
+      box-shadow: 0 0 14px rgba(0,212,255,.15);
+    }
+    .link-card-symbol {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .06em;
+    }
+    .link-card-name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: .08em;
+      margin-top: 4px;
+    }
+    .link-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: .1em;
+      color: var(--cyan);
+      text-transform: uppercase;
+    }
+    .link-card-badge::after {
+      content: '↗';
+      font-size: 11px;
+    }
+    .link-card-icon {
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
   </style>
 </head>
 <body>
@@ -538,7 +596,7 @@
 <header id="site-header">
   <div class="header-top">
     <!-- Logo -->
-    <div class="logo">MACRO<span>TERMINAL</span></div>
+    <div class="logo">MARKET<span>EGG</span></div>
 
     <!-- Status bar -->
     <div class="header-status">
@@ -590,249 +648,9 @@
 ══════════════════════════════════════ -->
 <main id="main">
 
-  <!-- ── SECTION: KOREAN MARKET ── -->
-  <div class="section-divider span-full">
-    <span class="divider-text">01 — Korean Markets</span>
-    <div class="divider-line"></div>
-  </div>
-
-  <!-- KR Markets Link Banner -->
-  <div class="span-full" style="background:linear-gradient(135deg,rgba(0,212,255,.07),rgba(0,255,163,.05));border:1px solid var(--border-bright);border-radius:var(--radius);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-    <div>
-      <div style="font-family:var(--font-display);font-size:11px;color:var(--cyan);letter-spacing:.2em;margin-bottom:5px">🇰🇷 KOREAN MARKET DATA — TRADINGVIEW</div>
-      <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">실시간 KOSPI · KOSDAQ · 개별종목 · 섹터 · 환율 전체 데이터</div>
-    </div>
-    <a href="https://www.tradingview.com/markets/korea/#stocks" target="_blank" rel="noopener"
-       style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;padding:9px 18px;border:1px solid var(--cyan);border-radius:4px;color:var(--cyan);background:rgba(0,212,255,.08);text-decoration:none;white-space:nowrap;transition:background .2s,box-shadow .2s;"
-       onmouseover="this.style.background='rgba(0,212,255,.18)';this.style.boxShadow='0 0 14px rgba(0,212,255,.3)'"
-       onmouseout="this.style.background='rgba(0,212,255,.08)';this.style.boxShadow='none'">
-      ↗ tradingview.com/markets/korea
-    </a>
-  </div>
-
-  <!-- KOSPI mini -->
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-dot green"></div>
-      <span class="section-title">KOSPI 종합지수</span>
-    </div>
-    <div class="panel-body" style="padding:0">
-      <div class="widget-wrap h-300">
-        <div class="tradingview-widget-container" style="height:100%">
-          <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-            {"symbol":"KRX:KOSPI","width":"100%","height":"100%","locale":"en","dateRange":"12M","colorTheme":"dark","isTransparent":true,"autosize":true,"largeChartUrl":"https://www.tradingview.com/chart/?symbol=KRX:KOSPI"}
-          </script>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- KOSDAQ mini -->
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-dot green"></div>
-      <span class="section-title">KOSDAQ 지수</span>
-    </div>
-    <div class="panel-body" style="padding:0">
-      <div class="widget-wrap h-300">
-        <div class="tradingview-widget-container" style="height:100%">
-          <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-            {"symbol":"KRX:KOSDAQ","width":"100%","height":"100%","locale":"en","dateRange":"12M","colorTheme":"dark","isTransparent":true,"autosize":true,"largeChartUrl":"https://www.tradingview.com/chart/?symbol=KRX:KOSDAQ"}
-          </script>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- KOSPI200 mini -->
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-dot green"></div>
-      <span class="section-title">KOSPI 200</span>
-    </div>
-    <div class="panel-body" style="padding:0">
-      <div class="widget-wrap h-300">
-        <div class="tradingview-widget-container" style="height:100%">
-          <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-            {"symbol":"KRX:KOSPI200","width":"100%","height":"100%","locale":"en","dateRange":"12M","colorTheme":"dark","isTransparent":true,"autosize":true,"largeChartUrl":"https://www.tradingview.com/chart/?symbol=KRX:KOSPI200"}
-          </script>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- KR 10Y Bond mini -->
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-dot" style="background:var(--cyan);box-shadow:var(--glow-cyan)"></div>
-      <span class="section-title">KR 10Y 국고채</span>
-    </div>
-    <div class="panel-body" style="padding:0">
-      <div class="widget-wrap h-300">
-        <div class="tradingview-widget-container" style="height:100%">
-          <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-            {"symbol":"TVC:KR10Y","width":"100%","height":"100%","locale":"en","dateRange":"12M","colorTheme":"dark","isTransparent":true,"autosize":true,"largeChartUrl":"https://www.tradingview.com/chart/?symbol=TVC:KR10Y"}
-          </script>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── SECTION: US MARKET ── -->
-  <!-- ── SECTION: US MARKET ── -->
-  <div class="section-divider span-full">
-    <span class="divider-text">02 — US Markets</span>
-    <div class="divider-line"></div>
-  </div>
-
-  <!-- S&P500 Chart -->
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-dot green"></div>
-      <span class="section-title">S&amp;P 500</span>
-    </div>
-    <div class="panel-body" style="padding:0">
-      <div class="widget-wrap h-300">
-        <div class="tradingview-widget-container" style="height:100%">
-          <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-            async>
-            {
-              "symbol": "FOREXCOM:SPXUSD",
-              "width": "100%",
-              "height": "100%",
-              "locale": "en",
-              "dateRange": "12M",
-              "colorTheme": "dark",
-              "isTransparent": true,
-              "autosize": true,
-              "largeChartUrl": "https://www.tradingview.com/chart/?symbol=FOREXCOM:SPXUSD"
-            }
-          </script>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- US Market News -->
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-dot amber"></div>
-      <span class="section-title">US MARKET NEWS</span>
-    </div>
-    <div class="panel-body" style="padding:0">
-      <div class="widget-wrap h-300">
-        <div class="tradingview-widget-container" style="height:100%">
-          <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js"
-            async>
-            {
-              "feedMode": "symbol",
-              "symbol": "FOREXCOM:SPXUSD",
-              "isTransparent": true,
-              "displayMode": "regular",
-              "width": "100%",
-              "height": "100%",
-              "colorTheme": "dark",
-              "locale": "en"
-            }
-          </script>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- US Market Overview (미니 전체) -->
-  <div class="panel span-2">
-    <div class="panel-header">
-      <div class="panel-dot cyan" style="background:var(--cyan);box-shadow:var(--glow-cyan)"></div>
-      <span class="section-title">US MARKET OVERVIEW — SECTORS</span>
-    </div>
-    <div class="panel-body" style="padding:0">
-      <div class="widget-wrap h-400">
-        <div class="tradingview-widget-container" style="height:100%">
-          <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js"
-            async>
-            {
-              "colorTheme": "dark",
-              "dateRange": "12M",
-              "showChart": true,
-              "locale": "en",
-              "largeChartUrl": "",
-              "isTransparent": true,
-              "showSymbolLogo": false,
-              "showFloatingTooltip": true,
-              "width": "100%",
-              "height": "100%",
-              "plotLineColorGrowing": "rgba(0,255,163,1)",
-              "plotLineColorFalling": "rgba(255,77,109,1)",
-              "gridLineColor": "rgba(0,212,255,0.1)",
-              "scaleFontColor": "rgba(100,140,170,1)",
-              "belowLineFillColorGrowing": "rgba(0,255,163,0.1)",
-              "belowLineFillColorFalling": "rgba(255,77,109,0.1)",
-              "belowLineFillColorGrowingBottom": "rgba(0,255,163,0)",
-              "belowLineFillColorFallingBottom": "rgba(255,77,109,0)",
-              "symbolActiveColor": "rgba(0,212,255,0.2)",
-              "tabs": [
-                {
-                  "title": "US Indices",
-                  "symbols": [
-                    {"s":"FOREXCOM:SPXUSD","d":"S&P 500"},
-                    {"s":"NASDAQ:NDX","d":"Nasdaq 100"},
-                    {"s":"INDEX:DJI","d":"Dow Jones"},
-                    {"s":"FOREXCOM:RTSUSD","d":"Russell 2000"},
-                    {"s":"INDEX:VIX","d":"VIX"}
-                  ],
-                  "originalTitle":"Indices"
-                },
-                {
-                  "title": "Korean Markets",
-                  "symbols": [
-                    {"s":"KRX:KOSPI","d":"KOSPI"},
-                    {"s":"KRX:KOSDAQ","d":"KOSDAQ"},
-                    {"s":"INDEX:KRWUSD","d":"KRW/USD"}
-                  ]
-                },
-                {
-                  "title": "Commodities",
-                  "symbols": [
-                    {"s":"TVC:GOLD","d":"Gold"},
-                    {"s":"TVC:USOIL","d":"Oil WTI"},
-                    {"s":"TVC:UKOIL","d":"Oil Brent"},
-                    {"s":"TVC:SILVER","d":"Silver"},
-                    {"s":"TVC:COPPER","d":"Copper"}
-                  ],
-                  "originalTitle":"Commodities"
-                },
-                {
-                  "title": "Bonds",
-                  "symbols": [
-                    {"s":"TVC:US10Y","d":"US 10Y"},
-                    {"s":"TVC:US02Y","d":"US 2Y"},
-                    {"s":"TVC:US30Y","d":"US 30Y"},
-                    {"s":"TVC:KR10Y","d":"KR 10Y"},
-                    {"s":"TVC:JP10Y","d":"JP 10Y"}
-                  ]
-                }
-              ]
-            }
-          </script>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ── SECTION: KOSTOLANY EGG ── -->
   <div class="section-divider span-full">
-    <span class="divider-text">03 — Kostolany Cycle Analyzer</span>
+    <span class="divider-text">00 — Kostolany Cycle Analyzer</span>
     <div class="divider-line"></div>
   </div>
 
@@ -1061,79 +879,258 @@
         </div>
       </div>
 
-      <!-- Signal Widgets Strip -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:14px">
-        <div class="mini-chart-card">
-          <div class="tradingview-widget-container" style="height:180px">
-            <div class="tradingview-widget-container__widget" style="height:100%"></div>
-            <script type="text/javascript"
-              src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-              async>
-              {
-                "symbol": "TVC:US10Y",
-                "width": "100%", "height": "100%",
-                "locale": "en", "dateRange": "6M",
-                "colorTheme": "dark", "isTransparent": true, "autosize": true,
-                "largeChartUrl": "https://www.tradingview.com/chart/?symbol=TVC:US10Y"
-              }
-            </script>
-          </div>
-        </div>
-        <div class="mini-chart-card">
-          <div class="tradingview-widget-container" style="height:180px">
-            <div class="tradingview-widget-container__widget" style="height:100%"></div>
-            <script type="text/javascript"
-              src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-              async>
-              {
-                "symbol": "INDEX:VIX",
-                "width": "100%", "height": "100%",
-                "locale": "en", "dateRange": "6M",
-                "colorTheme": "dark", "isTransparent": true, "autosize": true,
-                "largeChartUrl": "https://www.tradingview.com/chart/?symbol=INDEX:VIX"
-              }
-            </script>
-          </div>
-        </div>
-        <div class="mini-chart-card">
-          <div class="tradingview-widget-container" style="height:180px">
-            <div class="tradingview-widget-container__widget" style="height:100%"></div>
-            <script type="text/javascript"
-              src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-              async>
-              {
-                "symbol": "TVC:DXY",
-                "width": "100%", "height": "100%",
-                "locale": "en", "dateRange": "6M",
-                "colorTheme": "dark", "isTransparent": true, "autosize": true,
-                "largeChartUrl": "https://www.tradingview.com/chart/?symbol=TVC:DXY"
-              }
-            </script>
-          </div>
-        </div>
-        <div class="mini-chart-card">
-          <div class="tradingview-widget-container" style="height:180px">
-            <div class="tradingview-widget-container__widget" style="height:100%"></div>
-            <script type="text/javascript"
-              src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-              async>
-              {
-                "symbol": "TVC:GOLD",
-                "width": "100%", "height": "100%",
-                "locale": "en", "dateRange": "6M",
-                "colorTheme": "dark", "isTransparent": true, "autosize": true,
-                "largeChartUrl": "https://www.tradingview.com/chart/?symbol=TVC:GOLD"
-              }
-            </script>
-          </div>
+      <!-- Signal Link Cards -->
+      <div style="margin-top:14px">
+        <div class="label" style="margin-bottom:10px;padding-left:2px">📡 주요 매크로 지표 — TradingView에서 실시간 확인</div>
+        <div class="link-card-grid">
+  <a class="link-card" href="https://www.tradingview.com/chart/?symbol=TVC:US10Y" target="_blank" rel="noopener">
+    <div>
+      <div class="link-card-icon">📉</div>
+      <div class="link-card-symbol">US 10Y</div>
+      <div class="link-card-name">미국 국채 10년 수익률</div>
+    </div>
+    <span class="link-card-badge">TradingView에서 보기</span>
+  </a>
+  <a class="link-card" href="https://www.tradingview.com/chart/?symbol=INDEX:VIX" target="_blank" rel="noopener">
+    <div>
+      <div class="link-card-icon">😱</div>
+      <div class="link-card-symbol">VIX</div>
+      <div class="link-card-name">시장 공포지수</div>
+    </div>
+    <span class="link-card-badge">TradingView에서 보기</span>
+  </a>
+  <a class="link-card" href="https://www.tradingview.com/chart/?symbol=TVC:DXY" target="_blank" rel="noopener">
+    <div>
+      <div class="link-card-icon">💵</div>
+      <div class="link-card-symbol">DXY</div>
+      <div class="link-card-name">달러 인덱스</div>
+    </div>
+    <span class="link-card-badge">TradingView에서 보기</span>
+  </a>
+  <a class="link-card" href="https://www.tradingview.com/chart/?symbol=TVC:GOLD" target="_blank" rel="noopener">
+    <div>
+      <div class="link-card-icon">🥇</div>
+      <div class="link-card-symbol">GOLD</div>
+      <div class="link-card-name">금 현물 가격</div>
+    </div>
+    <span class="link-card-badge">TradingView에서 보기</span>
+  </a>
         </div>
       </div>
 
     </div><!-- /panel-body -->
   </div>
 
+
+  <!-- ── SECTION: KOREAN MARKET ── -->
+  <div class="section-divider span-full" data-lazy="1">
+    <span class="divider-text">01 — Korean Markets</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- KR Markets Link Banner -->
+  <div class="span-full" style="background:linear-gradient(135deg,rgba(0,212,255,.07),rgba(0,255,163,.05));border:1px solid var(--border-bright);border-radius:var(--radius);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <div>
+      <div style="font-family:var(--font-display);font-size:11px;color:var(--cyan);letter-spacing:.2em;margin-bottom:5px">🇰🇷 KOREAN MARKET DATA — TRADINGVIEW</div>
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">실시간 KOSPI · KOSDAQ · 개별종목 · 섹터 · 환율 전체 데이터</div>
+    </div>
+    <a href="https://www.tradingview.com/markets/korea/#stocks" target="_blank" rel="noopener"
+       style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;padding:9px 18px;border:1px solid var(--cyan);border-radius:4px;color:var(--cyan);background:rgba(0,212,255,.08);text-decoration:none;white-space:nowrap;transition:background .2s,box-shadow .2s;"
+       onmouseover="this.style.background='rgba(0,212,255,.18)';this.style.boxShadow='0 0 14px rgba(0,212,255,.3)'"
+       onmouseout="this.style.background='rgba(0,212,255,.08)';this.style.boxShadow='none'">
+      ↗ tradingview.com/markets/korea
+    </a>
+  </div>
+
+  <!-- KR Link Cards -->
+  <div class="span-full">
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-dot green"></div>
+        <span class="section-title">KR 주요 지수 &amp; 채권 — 클릭하여 TradingView에서 확인</span>
+      </div>
+      <div class="panel-body">
+        <div class="link-card-grid">
+  <a class="link-card" href="https://www.tradingview.com/chart/?symbol=KRX:KOSPI" target="_blank" rel="noopener">
+    <div>
+      <div class="link-card-icon">📈</div>
+      <div class="link-card-symbol">KOSPI</div>
+      <div class="link-card-name">코스피 종합지수</div>
+    </div>
+    <span class="link-card-badge">TradingView에서 보기</span>
+  </a>
+  <a class="link-card" href="https://www.tradingview.com/chart/?symbol=KRX:KOSDAQ" target="_blank" rel="noopener">
+    <div>
+      <div class="link-card-icon">📊</div>
+      <div class="link-card-symbol">KOSDAQ</div>
+      <div class="link-card-name">코스닥 지수</div>
+    </div>
+    <span class="link-card-badge">TradingView에서 보기</span>
+  </a>
+  <a class="link-card" href="https://www.tradingview.com/chart/?symbol=KRX:KOSPI200" target="_blank" rel="noopener">
+    <div>
+      <div class="link-card-icon">🔵</div>
+      <div class="link-card-symbol">KOSPI 200</div>
+      <div class="link-card-name">코스피 200</div>
+    </div>
+    <span class="link-card-badge">TradingView에서 보기</span>
+  </a>
+  <a class="link-card" href="https://www.tradingview.com/chart/?symbol=TVC:KR10Y" target="_blank" rel="noopener">
+    <div>
+      <div class="link-card-icon">🏦</div>
+      <div class="link-card-symbol">KR 10Y</div>
+      <div class="link-card-name">한국 국고채 10년</div>
+    </div>
+    <span class="link-card-badge">TradingView에서 보기</span>
+  </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION: US MARKET ── -->
+  <div class="section-divider span-full" data-lazy="1">
+    <span class="divider-text">02 — US Markets</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- S&P500 Chart -->
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-dot green"></div>
+      <span class="section-title">S&amp;P 500</span>
+    </div>
+    <div class="panel-body" style="padding:0">
+      <div class="widget-wrap h-300">
+        <div class="tradingview-widget-container" style="height:100%">
+          <div class="tradingview-widget-container__widget" style="height:100%"></div>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+            {
+              "symbol": "FOREXCOM:SPXUSD",
+              "width": "100%",
+              "height": "100%",
+              "locale": "en",
+              "dateRange": "12M",
+              "colorTheme": "dark",
+              "isTransparent": true,
+              "autosize": true,
+              "largeChartUrl": "https://www.tradingview.com/chart/?symbol=FOREXCOM:SPXUSD"
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- US Market News -->
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-dot amber"></div>
+      <span class="section-title">US MARKET NEWS</span>
+    </div>
+    <div class="panel-body" style="padding:0">
+      <div class="widget-wrap h-300">
+        <div class="tradingview-widget-container" style="height:100%">
+          <div class="tradingview-widget-container__widget" style="height:100%"></div>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js"
+            {
+              "feedMode": "symbol",
+              "symbol": "FOREXCOM:SPXUSD",
+              "isTransparent": true,
+              "displayMode": "regular",
+              "width": "100%",
+              "height": "100%",
+              "colorTheme": "dark",
+              "locale": "en"
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- US Market Overview (미니 전체) -->
+  <div class="panel span-2">
+    <div class="panel-header">
+      <div class="panel-dot cyan" style="background:var(--cyan);box-shadow:var(--glow-cyan)"></div>
+      <span class="section-title">US MARKET OVERVIEW — SECTORS</span>
+    </div>
+    <div class="panel-body" style="padding:0">
+      <div class="widget-wrap h-400">
+        <div class="tradingview-widget-container" style="height:100%">
+          <div class="tradingview-widget-container__widget" style="height:100%"></div>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js"
+            {
+              "colorTheme": "dark",
+              "dateRange": "12M",
+              "showChart": true,
+              "locale": "en",
+              "largeChartUrl": "",
+              "isTransparent": true,
+              "showSymbolLogo": false,
+              "showFloatingTooltip": true,
+              "width": "100%",
+              "height": "100%",
+              "plotLineColorGrowing": "rgba(0,255,163,1)",
+              "plotLineColorFalling": "rgba(255,77,109,1)",
+              "gridLineColor": "rgba(0,212,255,0.1)",
+              "scaleFontColor": "rgba(100,140,170,1)",
+              "belowLineFillColorGrowing": "rgba(0,255,163,0.1)",
+              "belowLineFillColorFalling": "rgba(255,77,109,0.1)",
+              "belowLineFillColorGrowingBottom": "rgba(0,255,163,0)",
+              "belowLineFillColorFallingBottom": "rgba(255,77,109,0)",
+              "symbolActiveColor": "rgba(0,212,255,0.2)",
+              "tabs": [
+                {
+                  "title": "US Indices",
+                  "symbols": [
+                    {"s":"FOREXCOM:SPXUSD","d":"S&P 500"},
+                    {"s":"NASDAQ:NDX","d":"Nasdaq 100"},
+                    {"s":"INDEX:DJI","d":"Dow Jones"},
+                    {"s":"FOREXCOM:RTSUSD","d":"Russell 2000"},
+                    {"s":"INDEX:VIX","d":"VIX"}
+                  ],
+                  "originalTitle":"Indices"
+                },
+                {
+                  "title": "Korean Markets",
+                  "symbols": [
+                    {"s":"KRX:KOSPI","d":"KOSPI"},
+                    {"s":"KRX:KOSDAQ","d":"KOSDAQ"},
+                    {"s":"INDEX:KRWUSD","d":"KRW/USD"}
+                  ]
+                },
+                {
+                  "title": "Commodities",
+                  "symbols": [
+                    {"s":"TVC:GOLD","d":"Gold"},
+                    {"s":"TVC:USOIL","d":"Oil WTI"},
+                    {"s":"TVC:UKOIL","d":"Oil Brent"},
+                    {"s":"TVC:SILVER","d":"Silver"},
+                    {"s":"TVC:COPPER","d":"Copper"}
+                  ],
+                  "originalTitle":"Commodities"
+                },
+                {
+                  "title": "Bonds",
+                  "symbols": [
+                    {"s":"TVC:US10Y","d":"US 10Y"},
+                    {"s":"TVC:US02Y","d":"US 2Y"},
+                    {"s":"TVC:US30Y","d":"US 30Y"},
+                    {"s":"TVC:KR10Y","d":"KR 10Y"},
+                    {"s":"TVC:JP10Y","d":"JP 10Y"}
+                  ]
+                }
+              ]
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ── SECTION: GLOBAL CAPITAL FLOW ── -->
-  <div class="section-divider span-full">
+  <div class="section-divider span-full" data-lazy="1">
     <span class="divider-text">04 — Global Capital Flow</span>
     <div class="divider-line"></div>
   </div>
@@ -1161,9 +1158,7 @@
           <div class="widget-wrap h-450">
             <div class="tradingview-widget-container" style="height:100%">
               <div class="tradingview-widget-container__widget" style="height:100%"></div>
-              <script type="text/javascript"
-                src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js"
-                async>
+              <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js"
                 {
                   "exchanges": [],
                   "dataSource": "SPX500",
@@ -1191,9 +1186,7 @@
           <div class="widget-wrap h-450">
             <div class="tradingview-widget-container" style="height:100%">
               <div class="tradingview-widget-container__widget" style="height:100%"></div>
-              <script type="text/javascript"
-                src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js"
-                async>
+              <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js"
                 {
                   "exchanges": ["KRX"],
                   "dataSource": "KOSPI200",
@@ -1221,9 +1214,7 @@
           <div class="widget-wrap h-450">
             <div class="tradingview-widget-container" style="height:100%">
               <div class="tradingview-widget-container__widget" style="height:100%"></div>
-              <script type="text/javascript"
-                src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js"
-                async>
+              <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js"
                 {
                   "dataSource": "Crypto",
                   "blockSize": "market_cap_calc",
@@ -1256,9 +1247,7 @@
       <div class="widget-wrap h-500">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js"
-            async>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js"
             {
               "width": "100%",
               "height": "100%",
@@ -1286,9 +1275,7 @@
       <div class="widget-wrap h-500">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js"
-            async>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js"
             {
               "feedMode": "market",
               "market": "forex",
@@ -1306,7 +1293,7 @@
   </div>
 
   <!-- ── SECTION: FOREX ── -->
-  <div class="section-divider span-full">
+  <div class="section-divider span-full" data-lazy="1">
     <span class="divider-text">05 — Foreign Exchange</span>
     <div class="divider-line"></div>
   </div>
@@ -1321,9 +1308,7 @@
       <div class="widget-wrap h-450">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js"
-            async>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js"
             {
               "width": "100%",
               "height": "100%",
@@ -1349,9 +1334,7 @@
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-            async>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
             {
               "symbol": "FX_IDC:USDKRW",
               "width": "100%", "height": "100%",
@@ -1375,9 +1358,7 @@
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-            async>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
             {
               "symbol": "FX_IDC:USDJPY",
               "width": "100%", "height": "100%",
@@ -1401,9 +1382,7 @@
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-            async>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
             {
               "symbol": "FX_IDC:USDCNY",
               "width": "100%", "height": "100%",
@@ -1427,9 +1406,7 @@
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-            async>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
             {
               "symbol": "FX:EURUSD",
               "width": "100%", "height": "100%",
@@ -1443,38 +1420,61 @@
     </div>
   </div>
 
-  <!-- FX Heat Map -->
+  <!-- FX Heat Map → Link Cards -->
   <div class="panel span-2">
     <div class="panel-header">
       <div class="panel-dot amber"></div>
-      <span class="section-title">FOREX HEAT MAP — 통화 강세/약세</span>
+      <span class="section-title">FOREX HEAT MAP — 통화 강세/약세 (TradingView)</span>
     </div>
-    <div class="panel-body" style="padding:0">
-      <div class="widget-wrap h-300">
-        <div class="tradingview-widget-container" style="height:100%">
-          <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-currency-rates.js"
-            async>
-            {
-              "base": "USD",
-              "currencies": ["EUR","GBP","JPY","CNY","KRW","AUD","CAD","CHF","SGD"],
-              "isTransparent": true,
-              "locale": "en",
-              "backgroundColor": "#070d1a",
-              "width": "100%",
-              "height": "100%",
-              "colorTheme": "dark"
-            }
-          </script>
-        </div>
+    <div class="panel-body">
+      <div class="link-card-grid">
+  <a class="link-card" href="https://www.tradingview.com/markets/currencies/" target="_blank" rel="noopener">
+    <div>
+      <div class="link-card-icon">🌐</div>
+      <div class="link-card-symbol">FX Heat Map</div>
+      <div class="link-card-name">전체 통화 강세·약세 히트맵</div>
+    </div>
+    <span class="link-card-badge">TradingView에서 보기</span>
+  </a>
+  <a class="link-card" href="https://www.tradingview.com/chart/?symbol=FX_IDC:USDKRW" target="_blank" rel="noopener">
+    <div>
+      <div class="link-card-icon">💹</div>
+      <div class="link-card-symbol">USD/KRW</div>
+      <div class="link-card-name">달러원 환율</div>
+    </div>
+    <span class="link-card-badge">TradingView에서 보기</span>
+  </a>
+  <a class="link-card" href="https://www.tradingview.com/chart/?symbol=FX_IDC:USDJPY" target="_blank" rel="noopener">
+    <div>
+      <div class="link-card-icon">🇯🇵</div>
+      <div class="link-card-symbol">USD/JPY</div>
+      <div class="link-card-name">달러엔 환율</div>
+    </div>
+    <span class="link-card-badge">TradingView에서 보기</span>
+  </a>
+  <a class="link-card" href="https://www.tradingview.com/chart/?symbol=FX_IDC:USDCNY" target="_blank" rel="noopener">
+    <div>
+      <div class="link-card-icon">🇨🇳</div>
+      <div class="link-card-symbol">USD/CNY</div>
+      <div class="link-card-name">달러위안 환율</div>
+    </div>
+    <span class="link-card-badge">TradingView에서 보기</span>
+  </a>
+  <a class="link-card" href="https://www.tradingview.com/chart/?symbol=FX:EURUSD" target="_blank" rel="noopener">
+    <div>
+      <div class="link-card-icon">🇪🇺</div>
+      <div class="link-card-symbol">EUR/USD</div>
+      <div class="link-card-name">유로달러 환율</div>
+    </div>
+    <span class="link-card-badge">TradingView에서 보기</span>
+  </a>
       </div>
     </div>
   </div>
 
 
   <!-- ── SECTION: ECONOMIC CALENDAR ── -->
-  <div class="section-divider span-full">
+  <div class="section-divider span-full" data-lazy="1">
     <span class="divider-text">06 — Economic Calendar</span>
     <div class="divider-line"></div>
   </div>
@@ -1488,9 +1488,7 @@
       <div class="widget-wrap h-500">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-events.js"
-            async>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-events.js"
             {
               "colorTheme": "dark",
               "isTransparent": true,
@@ -1507,7 +1505,7 @@
   </div>
 
   <!-- ── SECTION: COMMODITIES & BONDS ── -->
-  <div class="section-divider span-full">
+  <div class="section-divider span-full" data-lazy="1">
     <span class="divider-text">07 — Commodities & Bonds</span>
     <div class="divider-line"></div>
   </div>
@@ -1522,9 +1520,7 @@
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-            async>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
             {
               "symbol": "TVC:GOLD",
               "width": "100%", "height": "100%",
@@ -1547,9 +1543,7 @@
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-            async>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
             {
               "symbol": "TVC:USOIL",
               "width": "100%", "height": "100%",
@@ -1573,9 +1567,7 @@
       <div class="widget-wrap h-220">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-            async>
+          <script type="text/javascript" data-src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
             {
               "symbol": "BINANCE:BTCUSDT",
               "width": "100%", "height": "100%",
@@ -1721,6 +1713,67 @@ handleResize();
 
 /* ─── Smooth scroll to sections via keyboard shortcut hints ─── */
 /* (no-op baseline; can be extended) */
+</script>
+
+<script>
+/* ─────────────────────────────────────────────────
+   PERFORMANCE: IntersectionObserver Lazy Loading
+   뷰포트에 진입할 때만 TradingView 위젯 스크립트를 로드
+   → 초기 로딩 시 불필요한 네트워크 요청 방지
+───────────────────────────────────────────────── */
+(function() {
+  // 모든 TV 위젯 컨테이너 탐색
+  const containers = document.querySelectorAll('.tradingview-widget-container');
+
+  if (!containers.length) return;
+
+  // IntersectionObserver 지원 여부 확인
+  if (!('IntersectionObserver' in window)) {
+    // 미지원 시 즉시 모두 로드 (fallback)
+    containers.forEach(activateWidget);
+    return;
+  }
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        activateWidget(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    rootMargin: '200px 0px',  // 200px 전방 미리 로드
+    threshold: 0
+  });
+
+  containers.forEach(function(container) {
+    // 상단 visible 섹션(달걀, 티커)은 즉시 로드
+    const section = container.closest('[data-lazy]');
+    if (!section) {
+      // data-lazy 없으면 즉시 로드
+      activateWidget(container);
+    } else {
+      observer.observe(container);
+    }
+  });
+
+  function activateWidget(container) {
+    // 이미 로드된 경우 스킵
+    if (container.dataset.loaded) return;
+    container.dataset.loaded = '1';
+
+    const lazyScript = container.querySelector('script[data-src]');
+    if (!lazyScript) return;
+
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src  = lazyScript.getAttribute('data-src');
+    script.async = true;
+    // JSON 설정 복사
+    script.textContent = lazyScript.textContent;
+    lazyScript.replaceWith(script);
+  }
+})();
 </script>
 
 </body>

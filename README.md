@@ -1,4 +1,4 @@
-# MARKET EGG 📡
+# MARKET EGG 🥚📡
 
 > NASA Mission Control 스타일 글로벌 매크로 금융 대시보드  
 > 100% TradingView 실시간 위젯 기반 · 하드코딩 제로
@@ -12,7 +12,7 @@
 # macro-terminal.html → index.html 로 이름 변경 후 업로드
 git init
 git add index.html README.md
-git commit -m "feat: initial macro terminal dashboard"
+git commit -m "feat: initial market-egg dashboard"
 git push origin main
 ```
 
@@ -20,7 +20,7 @@ git push origin main
 1. Repository → **Settings** → **Pages**
 2. Source: **Deploy from a branch**
 3. Branch: `main` / folder: `/ (root)`
-4. Save → `https://[username].github.io/[repo-name]/` 접속
+4. Save → `https://[username].github.io/market-egg/` 접속
 
 ---
 
@@ -28,13 +28,13 @@ git push origin main
 
 | # | 섹션 | 위젯 |
 |---|------|------|
-| 01 | 한국 증시 (KOSPI · KOSDAQ) | symbol-overview + news |
-| 02 | 미국 증시 (S&P500 · NASDAQ · DOW · Sectors) | mini-overview + market-overview |
-| 03 | **코스톨라니 달걀** 사이클 분석 | SVG + US10Y · VIX · DXY · GOLD |
-| 04 | 글로벌 자금흐름 히트맵 | stock-heatmap (US/KR/Crypto) |
-| 05 | 외환 (USD/KRW · JPY · CNY · EUR) | forex-cross-rates + currency-rates |
-| 06 | 경제 캘린더 | events (US/KR/JP/CN/EU) |
-| 07 | 원자재 & 채권 | Gold · Oil · US10Y · BTC |
+| 00 | **코스톨라니 달걀** 사이클 분석 | SVG 인터랙티브 + 매크로 지표 링크 |
+| 01 | 한국 증시 (KOSPI · KOSDAQ · KR10Y) | 링크카드 + TradingView 연결 |
+| 02 | 미국 증시 (S&P500 · Sectors) | mini-overview + market-overview |
+| 03 | 글로벌 자금흐름 히트맵 | stock-heatmap (US/KR/Crypto) |
+| 04 | 외환 (USD/KRW · JPY · CNY · EUR) | forex-cross-rates + 링크카드 |
+| 05 | 경제 캘린더 | events (US/KR/JP/CN/EU) |
+| 06 | 원자재 & 암호화폐 | Gold · Oil · BTC |
 
 ---
 
